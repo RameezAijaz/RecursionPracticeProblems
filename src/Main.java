@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Main {
 
 
@@ -47,7 +51,8 @@ public class Main {
 
         System.out.println();
         System.out.println();
-
+        System.out.println("______________REVERSE PAIR OF LINKED LIST______________");
+        System.out.println("______________1->2->3->4______________");
         ListNode head = new ListNode(1);
         head.next = new ListNode(2);
         head.next.next = new ListNode(3);
@@ -62,10 +67,23 @@ public class Main {
 
         System.out.println();
         System.out.println();
-        System.out.println("______________reverse hello______________");
+        System.out.println("______________REVERSE CHAR ARRAY IN PLACE hello______________");
         char[] tmp = {'h','e','l','l','o'};
         reverseString(tmp, 0, tmp.length-1);
         System.out.print(tmp);
+
+
+        System.out.println();
+        System.out.println();
+
+
+        System.out.println();
+        System.out.println();
+        System.out.println("______________PASCAL TRIANGLE FOR 5______________");
+
+        int[][] pascalTriangles = new int[5][];
+        pascalsTriangle(5, pascalTriangles);
+        System.out.println(Arrays.deepToString(pascalTriangles));
 
 
         System.out.println();
@@ -169,6 +187,30 @@ public class Main {
         s[i] = s[j];
         s[j] = tmp;
         reverseString(s, i+1, j-1);
+    }
+
+    public static int[] pascalsTriangle(int i, int[][] result){
+        if (i==0)
+            return new int[]{1};
+
+
+        result[i-1] = pascalsTriangle(i-1, result);
+
+        int[] newPascal = new int[i+1];
+        for(int ind = 0; ind<newPascal.length; ind++){
+            if(ind ==0 || ind== newPascal.length-1)
+            {
+                newPascal[ind] = 1;
+            }
+            else {
+
+                newPascal[ind] = result[i-1][ind-1]+result[i-1][ind];
+            }
+
+        }
+
+        return newPascal;
+
     }
 
 }
