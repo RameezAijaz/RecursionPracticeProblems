@@ -47,6 +47,29 @@ public class Main {
 
         System.out.println();
         System.out.println();
+
+        ListNode head = new ListNode(1);
+        head.next = new ListNode(2);
+        head.next.next = new ListNode(3);
+        head.next.next.next = new ListNode(4);
+        ListNode swapped = swapPairs(head);
+
+        while(swapped != null){
+            System.out.println(swapped.val);
+            swapped = swapped.next;
+        }
+
+
+        System.out.println();
+        System.out.println();
+        System.out.println("______________reverse hello______________");
+        char[] tmp = {'h','e','l','l','o'};
+        reverseString(tmp, 0, tmp.length-1);
+        System.out.print(tmp);
+
+
+        System.out.println();
+        System.out.println();
     }
 
 
@@ -123,5 +146,35 @@ public class Main {
         return convertIntToString(num/10)+(num%10);
     }
 
+    private static ListNode swapPairs(ListNode listNode){
 
+        if(listNode == null || listNode.next == null)
+            return listNode;
+
+        ListNode tmp = listNode.next;
+
+        listNode.next = swapPairs(listNode.next.next);
+        tmp.next = listNode;
+        listNode = tmp;
+
+        return listNode;
+    }
+
+
+    public static void reverseString(char[] s, int i, int j){
+        if(i>=j)
+            return;
+
+        char tmp = s[i];
+        s[i] = s[j];
+        s[j] = tmp;
+        reverseString(s, i+1, j-1);
+    }
+
+}
+
+class ListNode {
+     int val;
+     ListNode next;
+     ListNode(int x) { val = x; }
 }
