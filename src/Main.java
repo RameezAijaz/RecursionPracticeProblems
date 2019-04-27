@@ -38,6 +38,15 @@ public class Main {
 
         System.out.println();
         System.out.println();
+
+        System.out.println();
+        System.out.println();
+        System.out.println("______________CONVERT 123 TO STRING______________");
+        System.out.print(convertIntToString(123));
+
+
+        System.out.println();
+        System.out.println();
     }
 
 
@@ -105,6 +114,14 @@ public class Main {
         return subSequenceAfter("", word);
     }
 
+    private static String convertIntToString(int num){
+        if(num<0)
+            return convertIntToString(-num);
+        if(num<10)
+            return num+"";
+
+        return convertIntToString(num/10)+(num%10);
+    }
 
 
 }
