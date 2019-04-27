@@ -89,31 +89,20 @@ public class Main {
         return reverseString(s.substring(1))+s.charAt(0);
     }
 
-    private static String allSubSequences(String word){
+    private static String subSequenceAfter(String partialSequence, String word){
 
         if(word.isEmpty())
-            return "";
+            return partialSequence;
 
 
-        char firstLetter = word.charAt(0);
-        String remainingString = word.substring(1);
-
-        String remainingStringSubSequences = allSubSequences(remainingString);
+        return subSequenceAfter(partialSequence, word.substring(1))+
+                ","+subSequenceAfter(partialSequence+word.charAt(0), word.substring(1));
 
 
 
-        StringBuilder result = new StringBuilder();
-
-
-        for(String subSequence: remainingStringSubSequences.split(",", -1)){
-            result.append(",");
-            result.append(subSequence);
-            result.append(",");
-            result.append(firstLetter);
-            result.append(subSequence);
-        }
-        return result.toString().substring(1);
-
+    }
+    private static String allSubSequences(String word){
+        return subSequenceAfter("", word);
     }
 
 
