@@ -79,15 +79,37 @@ public class Main {
 
         System.out.println();
         System.out.println();
-        System.out.println("______________PASCAL TRIANGLE FOR 5______________");
+        System.out.println("______________PASCAL TRIANGLE FOR 7______________");
 
-        int[][] pascalTriangles = new int[5][];
-        pascalsTriangle(5, pascalTriangles);
+        int[][] pascalTriangles = new int[7][];
+        pascalsTriangle(7, pascalTriangles);
         System.out.println(Arrays.deepToString(pascalTriangles));
 
 
         System.out.println();
         System.out.println();
+
+        System.out.println();
+        System.out.println();
+        System.out.println("______________Reverse Linked List______________");
+
+        head = new ListNode(1);
+        head.next = new ListNode(2);
+        head.next.next = new ListNode(3);
+        head.next.next.next = new ListNode(4);
+        ListNode reverse = reverseLinkedList(head);
+        while(reverse != null){
+            System.out.println(reverse.val);
+            reverse = reverse.next;
+        }
+
+        System.out.println();
+        System.out.println();
+
+
+
+
+
     }
 
 
@@ -210,6 +232,26 @@ public class Main {
         }
 
         return newPascal;
+
+    }
+    public static ListNode reverseLinkedList(ListNode head){
+        if(head == null || head.next == null)
+            return head;
+
+        return reverseLinkedList(null, head);
+
+    }
+
+    private static ListNode reverseLinkedList(ListNode head, ListNode next) {
+
+        if(next == null)
+            return head;
+
+
+        ListNode tmp = next.next;
+        next.next = head;
+        head = next;
+        return reverseLinkedList(head, tmp);
 
     }
 
