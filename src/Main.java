@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class Main {
@@ -106,10 +107,40 @@ public class Main {
         System.out.println();
         System.out.println();
 
+        System.out.println();
+        System.out.println();
+        System.out.println("Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top");
+        System.out.println("______________Total ways of Climbing 10 Steps Stairs______________");
+
+        int total = climbStairs(10);
+
+        System.out.println(total);
+
+        System.out.println();
+        System.out.println();
 
 
 
+    }
 
+    private static int climbStairs(int n) {
+
+
+        return climbStairs(n, new HashMap<Integer, Integer>());
+
+    }
+
+    private static int climbStairs(int n, HashMap<Integer,Integer> memo) {
+        if(n<0)
+            return 0;
+        if(n==0)
+            return 1;
+
+        if(memo.get(n) != null)
+            return memo.get(n);
+
+        memo.put(n, climbStairs(n-1, memo)+climbStairs(n-2, memo));
+        return memo.get(n);
     }
 
 
