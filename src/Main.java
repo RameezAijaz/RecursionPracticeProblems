@@ -120,6 +120,33 @@ public class Main {
         System.out.println();
 
 
+        System.out.println();
+        System.out.println();
+        System.out.println("______________Given a binary tree, find its maximum depth______________");
+
+        TreeNode bTreeNode = new TreeNode(3);
+        bTreeNode.left = new TreeNode(9);
+        bTreeNode.right = new TreeNode(20);
+        bTreeNode.right.right = new TreeNode(7);
+        bTreeNode.right.left = new TreeNode(15);
+        int depth = maxBinaryTreeDepth(bTreeNode);
+
+        System.out.println(depth);
+
+        System.out.println();
+        System.out.println();
+
+
+
+    }
+
+    private static int maxBinaryTreeDepth(TreeNode bTreeNode) {
+        if(bTreeNode == null)
+            return 0;
+
+        int left = maxBinaryTreeDepth(bTreeNode.left);
+        int right = maxBinaryTreeDepth(bTreeNode.right);
+        return 1+Math.max(left, right);
 
     }
 
@@ -292,4 +319,10 @@ class ListNode {
      int val;
      ListNode next;
      ListNode(int x) { val = x; }
+}
+class TreeNode {
+      int val;
+      TreeNode left;
+      TreeNode right;
+      TreeNode(int x) { val = x; }
 }
