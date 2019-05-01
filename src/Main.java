@@ -138,6 +138,76 @@ public class Main {
 
 
 
+        System.out.println();
+        System.out.println();
+        System.out.println("______________Power of m______________");
+
+        double ans = powerOfM(1.00001,7998);
+
+        System.out.println(ans);
+
+        System.out.println();
+        System.out.println();
+
+
+        System.out.println();
+        System.out.println();
+        System.out.println("______________Merge two sorted linked lists______________");
+
+        ListNode l1 = new ListNode(1);
+        l1.next = new ListNode(2);
+        l1.next.next = new ListNode(4);
+
+        ListNode l2 = new ListNode(1);
+        l2.next = new ListNode(3);
+        l2.next.next = new ListNode(4);
+
+
+        ListNode mergedList = mergeTwoLists(l1,l2);
+
+        while(mergedList!=null)
+        {
+            System.out.println(mergedList.val);
+            mergedList = mergedList.next;
+        }
+
+        System.out.println();
+        System.out.println();
+
+
+
+    }
+
+    private static ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        if(l1 == null && l2 == null)
+            return null;
+        if(l1 == null || l2 == null)
+            return l1 == null?l2:l1;
+
+        ListNode newNode;
+
+        if(l1.val<l2.val){
+            newNode = l1;
+            l1= l1.next;
+        }
+        else {
+            newNode = l2;
+            l2 = l2.next;
+        }
+
+        newNode.next = mergeTwoLists(l1, l2);
+        return newNode;
+    }
+
+    private static double powerOfM(double x, int n) {
+        if(n==0)
+            return 1;
+        if(n<0){
+            return 1/powerOfM(x, Math.abs(n));
+        }
+        else
+            return x*powerOfM(x, n-1);
+
     }
 
     private static int maxBinaryTreeDepth(TreeNode bTreeNode) {
