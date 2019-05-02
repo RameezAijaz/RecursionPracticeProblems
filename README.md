@@ -10,6 +10,8 @@ Java example problems of recursion
 7) Reverse linkedlist in pairs
 8) Reverse char array inplace
 9) Pascal triangle
+
+![Image of Pascal Triangle](https://upload.wikimedia.org/wikipedia/commons/0/0d/PascalTriangleAnimated2.gif)
 10) Reverse linkedlist
 11) Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
 12) Maximum depth of a binary tree
